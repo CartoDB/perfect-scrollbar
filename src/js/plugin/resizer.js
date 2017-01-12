@@ -16,7 +16,9 @@ module.exports = function (element) {
     var frame = document.createElement('iframe');
     frame.style.cssText = CSS;
     element.appendChild(frame);
-    i.event.bind(frame.contentWindow, 'resize', handler);
+    frame.onload = function () {
+      i.event.bind(frame.contentWindow, 'resize', handler);
+    };
     return frame;
   };
 
