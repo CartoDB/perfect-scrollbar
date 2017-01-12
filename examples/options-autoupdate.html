@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>perfect-scrollbar example</title>
+    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <style>
+      .contentHolder { position:relative; margin:0px auto; padding:0px; width: 80%; height: 400px; overflow: auto; }
+      .always-visible.contentHolder .content { background-image: url('./azusa.jpg'); width: 680px; height: 320px; }
+      .spacer { text-align:center }
+
+      .always-visible.ps-container > .ps-scrollbar-x-rail,
+      .always-visible.ps-container > .ps-scrollbar-y-rail {
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="Default" class="contentHolder always-visible">
+      <div id="Content" class="content">
+      </div>
+    </div>
+    <p style='text-align: center'>
+      <button onclick='addContent()'>Add new content!</button>
+      <button onclick='removeContent()'>Remove content!</button>
+    </p>
+    <script>
+      var i = 1;
+      var $ = document.querySelector.bind(document);
+      window.onload = function () {
+        Ps.initialize($('#Default'), {
+          autoupdate: true
+        });
+      };
+
+      var addContent = function () {
+        var newDiv = document.createElement('div');
+        newDiv.id = 'node' + i++;
+        var newContent = document.createTextNode('Hi there!');
+        newDiv.appendChild(newContent);
+
+        $('#Default').insertBefore(newDiv, $('#Content'));
+      };
+
+      var removeContent = function () {
+        if (i <= 1) return;
+
+        var node = $('#node' + --i);
+        node.parentNode.removeChild(node);
+      };
+    </script>
+  </body>
+</html>
+
