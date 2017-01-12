@@ -15,10 +15,6 @@ module.exports = function (element) {
     i.observer.disconnect();
   }
 
-  if (i.resizer) {
-    i.resizer.parentNode.removeChild(i.resizer);
-  }
-
   i.event.unbindAll();
   dom.remove(i.scrollbarX);
   dom.remove(i.scrollbarY);
