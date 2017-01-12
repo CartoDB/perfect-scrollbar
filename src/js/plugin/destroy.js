@@ -16,7 +16,7 @@ module.exports = function (element) {
   }
 
   if (i.resizer) {
-    i.resizer.remove();
+    i.resizer.parentNode.removeChild(i.resizer);
   }
 
   i.event.unbindAll();
