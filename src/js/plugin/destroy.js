@@ -11,6 +11,10 @@ module.exports = function (element) {
     return;
   }
 
+  if (i.observer) {
+    i.observer.disconnect();
+  }
+
   i.event.unbindAll();
   dom.remove(i.scrollbarX);
   dom.remove(i.scrollbarY);

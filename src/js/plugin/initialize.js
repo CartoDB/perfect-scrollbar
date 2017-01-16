@@ -4,6 +4,8 @@ var _ = require('../lib/helper');
 var cls = require('../lib/class');
 var instances = require('./instances');
 var updateGeometry = require('./update-geometry');
+var autoupdate = require('./autoupdate');
+var resizer = require('./resizer');
 
 // Handlers
 var handlers = {
@@ -34,4 +36,9 @@ module.exports = function (element, userSettings) {
   nativeScrollHandler(element);
 
   updateGeometry(element);
+
+  if (i.settings.autoupdate) {
+    autoupdate(element);
+    resizer(element);
+  }
 };
