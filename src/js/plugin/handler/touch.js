@@ -89,7 +89,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   }
   function touchMove(e) {
     var target = e.target;
-    var className = target && target.getAttribute('class') || '';
+    var className = target && target.getAttribute && target.getAttribute('class') || '';
 
     if (!className.match(/ps-prevent-touchmove/)) {
       if (!inLocalTouch && i.settings.swipePropagation) {
