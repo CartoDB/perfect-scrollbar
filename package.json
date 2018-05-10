@@ -57,7 +57,11 @@
   "scripts": {
     "test": "gulp",
     "before-deploy": "gulp && gulp compress",
-    "release": "rm -rf dist && gulp && npm publish"
+    "release": "rm -rf dist && gulp && npm publish",
+    "bump": "npm version patch",
+    "bump:major": "npm version major",
+    "bump:minor": "npm version minor",
+    "postversion": "git push origin master --follow-tags"
   },
   "license": "MIT"
 }
